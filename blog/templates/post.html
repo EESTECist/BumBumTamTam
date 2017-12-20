@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 center">
+                <h1>{{ post.title }}</h1>
+                <p>{{ post.body }}</p>
+                <small>{{ post.date }}</small>
+            </div>
+        </div>
+    </div>
+{% endblock %}

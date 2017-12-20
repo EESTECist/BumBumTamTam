@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category.title }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 center">
+                <h1>{{ category.title }}</h1>
+                <hr>
+                {% for post in category.post_set.all %}
+                    <a href="{% url "post" post.id %}"><h3>{{ post.title }}</h3></a>
+                    <p>{{ post.body }}</p>
+                    <small>{{ post.date }}</small>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

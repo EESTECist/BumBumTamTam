@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load bootstrap_tags %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 center">
+                <form class="form-horizontal" action="/" method="POST">
+                    {% csrf_token %}
+                    {{ form|as_bootstrap }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6 offset-md-3 center">
+                <h1>Posts</h1>
+                {% for post in posts %}
+                    <p><a href="{% url "post" post.id %}">{{ post.title }}</a></p>
+                {% endfor %}
+                <h1>Categories</h1>
+                {% for category in categories %}
+                    <p><a href="{% url "category" category.slug %}">{{ category.title }}</a></p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
